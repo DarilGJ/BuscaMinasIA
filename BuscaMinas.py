@@ -5,7 +5,7 @@ import random
 class BuscaminasExperto:
     def __init__(self, root):
         self.root = root
-        self.root.title("Buscaminas")
+        self.root.title("Buscaminas IA")
         self.filas = 10
         self.columnas = 10
         
@@ -210,7 +210,7 @@ class BuscaminasExperto:
     def restaurar_estilo_casilla(self, r, c):
         estado = self.tablero_ia[r][c]
         if estado == 'M':
-            self.botones[r][c].config(text="🚩", bg="#ffadad", fg="black", relief="raised")
+            self.botones[r][c].config(text="#", bg="#ffadad", fg="black", relief="raised")
         elif estado == 'S':
             self.botones[r][c].config(text="", bg="#d9fdd3", fg="black", relief="raised")
         elif isinstance(estado, int):
@@ -271,7 +271,7 @@ class BuscaminasExperto:
             # entonces esta casilla debía ser mina.
             if not self.casilla_puede_ser_segura(r, c):
                 self.tablero_ia[r][c] = 'M'
-                self.botones[r][c].config(text="🚩", bg="#ffadad", fg="black")
+                self.botones[r][c].config(text="#", bg="#ffadad", fg="black")
                 messagebox.showwarning(
                     "Corrección lógica",
                     f"La casilla ({r}, {c}) no puede ser segura por restricciones vecinas.\n"
@@ -327,7 +327,7 @@ class BuscaminasExperto:
                             for vr, vc in ocultos:
                                 if self.colocacion_mina_valida(vr, vc):
                                     self.tablero_ia[vr][vc] = 'M'
-                                    self.botones[vr][vc].config(text="🚩", bg="#ffadad", fg="black")
+                                    self.botones[vr][vc].config(text="#", bg="#ffadad", fg="black")
                                     hubo_cambio = True
 
         # 2. Destapar primero las casillas ya deducidas como seguras
